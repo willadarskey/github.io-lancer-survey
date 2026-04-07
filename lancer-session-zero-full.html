@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lancer // Session Zero Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #060e0a;
+  --surf:    #0b1710;
+  --surf2:   #101e16;
+  --border:  #182a1e;
+  --border2: #253d2e;
+  --accent:  #00d98b;
+  --adim:    #004a30;
+  --aglow:   rgba(0,217,139,0.09);
+  --warm:    #e9ab52;
+  --wdim:    #3e2508;
+  --wglow:   rgba(233,171,82,0.09);
+  --red:     #df5d4a;
+  --rdim:    rgba(223,93,74,0.12);
+  --blue:    #4b9fd5;
+  --bdim:    rgba(75,159,213,0.12);
+  --purple:  #a880e8;
+  --pdim:    rgba(168,128,232,0.12);
+  --pink:    #d47faa;
+  --t:       #a6c2b2;
+  --tbright: #dcf0e6;
+  --tdim:    #445e50;
+  --mono:    'Share Tech Mono', monospace;
+  --serif:   'Source Serif 4', Georgia, serif;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+body {
+  background: var(--bg);
+  color: var(--t);
+  font-family: var(--serif);
+  font-size: 16px;
+  line-height: 1.75;
+  padding-bottom: 100px;
+}
+
+body::before {
+  content:'';
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(rgba(0,217,139,0.02) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(0,217,139,0.02) 1px,transparent 1px);
+  background-size:44px 44px;
+  pointer-events:none;z-index:0;
+}
+
+.wrap {
+  position:relative;z-index:1;
+  max-width:760px;
+  margin:0 auto;
+  padding:0 28px;
+}
+
+/* ── PROGRESS ── */
+.progress {
+  position:sticky;top:0;z-index:200;
+  background:rgba(6,14,10,0.95);
+  border-bottom:1px solid var(--border);
+  padding:10px 28px;
+  display:flex;align-items:center;gap:14px;
+  backdrop-filter:blur(8px);
+}
+.progress-label {
+  font-family:var(--mono);font-size:9px;letter-spacing:3px;
+  color:var(--tdim);white-space:nowrap;text-transform:uppercase;
+}
+.progress-track {
+  flex:1;height:2px;background:var(--border);border-radius:1px;overflow:hidden;
+}
+.progress-fill {
+  height:100%;background:var(--accent);border-radius:1px;
+  width:0%;transition:width 0.4s ease;
+}
+.progress-count {
+  font-family:var(--mono);font-size:9px;letter-spacing:2px;
+  color:var(--tdim);white-space:nowrap;
+}
+.progress-count span{color:var(--accent);}
+
+/* ── HEADER ── */
+.site-header {
+  padding:64px 0 52px;
+  border-bottom:1px solid var(--border);
+}
+.eyebrow {
+  font-family:var(--mono);font-size:9px;letter-spacing:5px;
+  color:var(--accent);text-transform:uppercase;margin-bottom:16px;
+}
+.site-title {
+  font-family:var(--mono);
+  font-size:clamp(24px,4.5vw,42px);
+  color:var(--tbright);
+  letter-spacing:2px;line-height:1.1;margin-bottom:10px;
+}
+.site-title span{color:var(--accent);}
+.site-sub {
+  font-size:15px;font-style:italic;color:var(--tdim);
+  max-width:580px;line-height:1.7;
+}
+
+/* ── SETTING ── */
+.setting {
+  padding:52px 0 0;
+}
+.setting-label {
+  font-family:var(--mono);font-size:9px;letter-spacing:4px;
+  color:var(--tdim);text-transform:uppercase;
+  display:flex;align-items:center;gap:12px;margin-bottom:24px;
+}
+.setting-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.setting p{
+  font-size:16px;line-height:1.85;color:var(--t);
+  max-width:700px;margin-bottom:18px;
+}
+.setting p:last-child{margin-bottom:0;}
+.setting p strong{color:var(--tbright);font-weight:600;}
+
+.pull {
+  margin:28px 0;padding:18px 22px;
+  border-left:3px solid var(--accent);
+  background:var(--aglow);border-radius:0 3px 3px 0;
+}
+.pull p{
+  font-size:17px;font-style:italic;color:var(--tbright);
+  line-height:1.65;margin:0;
+}
+.pull cite{
+  display:block;font-family:var(--mono);font-size:9px;
+  letter-spacing:2px;color:var(--tdim);margin-top:10px;font-style:normal;
+}
+
+/* ── PART DIVIDER ── */
+.part-div {
+  margin:72px 0 0;
+  padding-top:52px;
+  border-top:1px solid var(--border);
+}
+.part-tag {
+  font-family:var(--mono);font-size:9px;letter-spacing:4px;
+  text-transform:uppercase;padding:4px 10px;border-radius:2px;
+  display:inline-block;margin-bottom:14px;
+}
+.part-tag.green{color:var(--accent);border:1px solid var(--adim);background:var(--aglow);}
+.part-tag.warm {color:var(--warm); border:1px solid var(--wdim);background:var(--wglow);}
+.part-tag.red  {color:var(--red);  border:1px solid var(--rdim);background:var(--rdim);}
+
+.part-heading {
+  font-family:var(--mono);font-size:20px;color:var(--tbright);
+  letter-spacing:1px;margin-bottom:6px;
+}
+.part-sub {
+  font-size:13px;font-style:italic;color:var(--tdim);
+  line-height:1.6;max-width:600px;margin-bottom:40px;
+}
+
+/* ── INSTRUCTIONS ── */
+.instr {
+  background:var(--surf2);border-left:3px solid var(--accent);
+  border:1px solid var(--border);border-left:3px solid var(--accent);
+  padding:14px 18px;border-radius:0 3px 3px 0;margin-bottom:40px;
+}
+.instr-label{
+  font-family:var(--mono);font-size:9px;letter-spacing:3px;
+  color:var(--accent);text-transform:uppercase;margin-bottom:5px;
+}
+.instr p{font-size:13px;color:var(--t);line-height:1.65;margin:0;}
+
+/* ── QUESTION BLOCK ── */
+.q-block {
+  margin-bottom:48px;padding-bottom:48px;
+  border-bottom:1px solid var(--border);
+}
+.q-block:last-child{border-bottom:none;}
+
+.q-num {
+  font-family:var(--mono);font-size:9px;letter-spacing:3px;
+  color:var(--tdim);text-transform:uppercase;margin-bottom:6px;
+}
+.q-text {
+  font-family:var(--mono);font-size:16px;color:var(--tbright);
+  letter-spacing:0.5px;line-height:1.4;margin-bottom:6px;
+}
+.q-note {
+  font-size:12px;font-style:italic;color:var(--tdim);
+  margin-bottom:20px;line-height:1.55;
+}
+
+/* rank badge row */
+.rank-row {
+  display:flex;align-items:center;gap:8px;margin-bottom:14px;
+}
+.rbadge {
+  font-family:var(--mono);font-size:9px;letter-spacing:2px;
+  padding:3px 8px;border-radius:2px;text-transform:uppercase;
+}
+.rb1{color:var(--accent);border:1px solid var(--adim);background:var(--aglow);}
+.rb2{color:var(--warm); border:1px solid var(--wdim);background:var(--wglow);}
+.rb3{color:var(--blue); border:1px solid var(--bdim);background:var(--bdim);}
+.rank-row span{font-family:var(--mono);font-size:10px;color:var(--tdim);}
+
+/* options */
+.options{display:flex;flex-direction:column;gap:6px;}
+
+.option {
+  display:flex;align-items:flex-start;gap:14px;
+  padding:13px 16px;background:var(--surf2);
+  border:1px solid var(--border);border-radius:3px;
+  cursor:pointer;user-select:none;
+  transition:border-color 0.15s,background 0.15s,opacity 0.3s;
+}
+.option:hover:not(.dead):not(.chosen):not([data-disabled]){border-color:var(--border2);}
+
+.rslot {
+  min-width:28px;height:28px;
+  border:1px solid var(--border2);border-radius:50%;
+  background:var(--surf);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:12px;color:var(--tdim);
+  flex-shrink:0;margin-top:1px;transition:all 0.2s;
+}
+
+.opt-main{font-size:15px;color:var(--tbright);line-height:1.45;transition:all 0.3s;}
+.opt-sub {font-size:12px;color:var(--tdim);margin-top:3px;line-height:1.5;transition:all 0.3s;}
+
+/* ranked states */
+.option.ranked-1{border-color:var(--accent);background:var(--aglow);}
+.option.ranked-1 .rslot{background:var(--accent);border-color:var(--accent);color:var(--bg);}
+
+.option.ranked-2{border-color:var(--warm);background:var(--wglow);}
+.option.ranked-2 .rslot{background:var(--warm);border-color:var(--warm);color:var(--bg);}
+
+.option.ranked-3{border-color:var(--blue);background:var(--bdim);}
+.option.ranked-3 .rslot{background:var(--blue);border-color:var(--blue);color:var(--bg);}
+
+.option.maxed{opacity:0.35;pointer-events:none;}
+
+/* Q25 special */
+.option.dead{
+  cursor:not-allowed;border-color:var(--border);
+  background:var(--surf);opacity:0.45;pointer-events:none;
+}
+.option.dead .opt-main{
+  text-decoration:line-through;text-decoration-color:var(--red);
+  text-decoration-thickness:2px;color:var(--tdim);
+}
+.option.dead .opt-sub{
+  text-decoration:line-through;text-decoration-color:var(--red);
+  text-decoration-thickness:1px;
+}
+.option.dead .rslot{border-color:var(--red);color:var(--red);font-size:15px;}
+
+.option.chosen{border-color:var(--accent);background:var(--aglow);pointer-events:none;}
+.option.chosen .rslot{background:var(--accent);border-color:var(--accent);color:var(--bg);font-size:10px;letter-spacing:0.5px;}
+.option.chosen .opt-main{color:var(--accent);font-weight:600;}
+
+.joke-msg{
+  font-family:var(--mono);font-size:11px;letter-spacing:1px;
+  margin-top:12px;min-height:18px;opacity:0;transition:opacity 0.3s;
+}
+.joke-msg.err{color:var(--red);}
+.joke-msg.ok {color:var(--accent);}
+.joke-msg.visible{opacity:1;}
+
+/* ── RESULTS ── */
+.results {
+  display:none;margin-top:64px;
+  background:var(--surf);border:1px solid var(--border2);
+  border-top:3px solid var(--accent);border-radius:0 0 4px 4px;
+  padding:36px 28px;
+}
+.results.visible{display:block;}
+
+.results-title{
+  font-family:var(--mono);font-size:13px;letter-spacing:2px;
+  color:var(--accent);text-transform:uppercase;margin-bottom:6px;
+}
+.results-sub{
+  font-size:13px;font-style:italic;color:var(--tdim);margin-bottom:28px;
+}
+.results-grid{display:flex;flex-direction:column;gap:24px;}
+
+.result-row{}
+.result-q{
+  font-family:var(--mono);font-size:9px;letter-spacing:2px;
+  color:var(--tdim);text-transform:uppercase;margin-bottom:8px;
+}
+.result-answers{display:flex;flex-direction:column;gap:5px;}
+.result-answer{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--tbright);}
+.rrank{
+  font-family:var(--mono);font-size:9px;letter-spacing:2px;
+  padding:2px 7px;border-radius:2px;white-space:nowrap;margin-top:2px;flex-shrink:0;
+}
+.rr1{color:var(--accent);background:var(--aglow);border:1px solid var(--adim);}
+.rr2{color:var(--warm); background:var(--wglow);border:1px solid var(--wdim);}
+.rr3{color:var(--blue); background:var(--bdim); border:1px solid var(--bdim);}
+
+.copy-btn {
+  margin-top:24px;background:none;
+  border:1px solid var(--border2);color:var(--tdim);
+  font-family:var(--mono);font-size:10px;letter-spacing:2px;
+  padding:10px 20px;border-radius:3px;cursor:pointer;
+  transition:all 0.2s;text-transform:uppercase;display:inline-block;
+}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent);}
+.copy-btn.done{color:var(--accent);border-color:var(--accent);}
+
+/* ── NAME FIELD ── */
+.name-block {
+  margin:48px 0 0;padding:32px 28px;
+  background:var(--surf2);border:1px solid var(--border2);
+  border-top:3px solid var(--accent);border-radius:0 0 4px 4px;
+}
+.name-label {
+  font-family:var(--mono);font-size:9px;letter-spacing:4px;
+  color:var(--accent);text-transform:uppercase;margin-bottom:6px;
+}
+.name-heading {
+  font-family:var(--mono);font-size:16px;color:var(--tbright);
+  letter-spacing:0.5px;margin-bottom:6px;
+}
+.name-note {
+  font-size:12px;font-style:italic;color:var(--tdim);
+  margin-bottom:18px;line-height:1.55;
+}
+.name-input {
+  width:100%;background:var(--surf);border:1px solid var(--border2);
+  color:var(--tbright);font-family:var(--mono);font-size:16px;
+  padding:12px 16px;border-radius:3px;outline:none;
+  transition:border-color 0.2s;letter-spacing:1px;
+}
+.name-input:focus{border-color:var(--accent);}
+.name-input::placeholder{color:var(--tdim);}
+
+/* ── SUBMIT ── */
+.submit-btn {
+  margin-top:16px;background:var(--adim);
+  border:1px solid var(--accent);color:var(--accent);
+  font-family:var(--mono);font-size:11px;letter-spacing:3px;
+  padding:12px 28px;border-radius:3px;cursor:pointer;
+  transition:all 0.2s;text-transform:uppercase;display:inline-block;
+}
+.submit-btn:hover:not(:disabled){background:var(--accent);color:var(--bg);}
+.submit-btn:disabled{opacity:0.4;cursor:not-allowed;}
+
+.submit-status {
+  font-family:var(--mono);font-size:11px;letter-spacing:1px;
+  margin-top:12px;min-height:18px;opacity:0;transition:opacity 0.3s;
+}
+.submit-status.visible{opacity:1;}
+.submit-status.ok {color:var(--accent);}
+.submit-status.err{color:var(--red);}
+
+/* ── PRINT ── */
+@media print{
+  body{background:white;color:black;}
+  body::before,.progress,.results,.copy-btn,.name-block,.submit-btn{display:none;}
+  .option{border:1px solid #ccc;break-inside:avoid;}
+  .rslot{border:1px solid #999;}
+  .pull{border-left:2px solid #999;background:#f5f5f5;}
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS -->
+<div class="progress">
+  <span class="progress-label">Progress</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-count"><span id="progressDone">0</span> / 25</span>
+</div>
+
+<div class="wrap">
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="eyebrow">▸ Lancer TTRPG // Session Zero</div>
+  <h1 class="site-title">PLAYER SURVEY<br><span>// 5016u</span></h1>
+  <p class="site-sub">Read the setting. Fill out the survey. Return it to the GM before we sit down together. Your answers are the game we build.</p>
+</header>
+
+<!-- SETTING -->
+<div class="setting">
+  <div class="setting-label">The Setting</div>
+
+  <p>It is the year <strong>5016u</strong>. Humanity has been spreading across the stars for thousands of years, and it shows — in everything.</p>
+
+  <p><strong>If you were born near Cradle</strong>, you have never checked a price before buying food. You have never watched someone die of something curable. Your body has been maintained since birth by medical technology so routine it has no name, only a scheduled appointment. The omninet streams culture, news, and connection into every surface you own. You have opinions about which blink gate terminal has the best departure lounges. When you think about Union, if you think about it at all, it feels something like gravity — invisible, constant, and not worth worrying about. You have never needed to worry about it. That is, itself, the point.</p>
+
+  <p><strong>If you were born on the frontier</strong>, you know what things cost because you have gone without them. You have watched infections become fevers become graves. You have eaten the same protein culture for six months because the supply barge was late, and when it finally arrived the prices had gone up. You know your neighbors not because you chose them but because survival made the choice for you. The omninet reaches you — technically — but the blink gate is two months away at sub-light, and the gate fees are set by whoever showed up and decided they owned the terminal. Union is coming. It has been coming your whole life. You have started to wonder what it will want when it gets here.</p>
+
+  <p>Union holds the galaxy together through three levers: the <strong>blink gates</strong>, the <strong>omninet</strong>, and <strong>manna</strong>, the universal currency. Control all three and you control everything. Union does. It prefers to govern from a distance — letting worlds sort themselves out, stepping in only when things become too broken to ignore. When it steps in, it arrives with warships. People on the frontier have learned that liberation and death can travel in the same fleet. The difference between them is a decision made very far away, by people who will never see the consequences.</p>
+
+  <p>Four corpo-states fill the space Union leaves behind, selling mechs, weapons, and technology to anyone with manna to spend. They operate under Union's regulations the way water operates under gravity: technically in compliance, always looking for lower ground.</p>
+
+  <p><strong>General Massive Systems</strong> is everywhere — not because anyone chose them, but because they were already there. GMS makes the Everest, the frame every pilot drops in on their first mission. Their gear is openly licensed, priced for access, and repairable by anyone with a wrench. You'll find GMS components in the most advanced SSC build and the most desperate frontier salvage job. They are the shared infrastructure of the galaxy's military economy — the argument, made in steel and composite, that common ownership works.</p>
+
+  <p><strong>IPS-Northstar</strong> builds for people who work for a living. Heavy, durable, deliberately unglamorous — designed to take damage and bring the pilot home. The culture is maritime and industrial. Their mechs have dents that never quite got hammered out. There is something honest about them, which makes it easier to forget that honest and good are not the same thing.</p>
+
+  <p><strong>Smith-Shimano Corpro</strong> makes the most beautiful machines in the galaxy, and they know it. SSC frames are agile, elegant, and personal — each one a statement about who the pilot is. The aesthetics are solarpunk. The business model is not. Identity is their product. Access is conditional on what you can pay.</p>
+
+  <p><strong>Harrison Armory</strong> doesn't bother with aesthetics. They make the most powerful weapons available outside Union's core military and sell them with a philosophy attached: security is purchased, strength is its own justification, and the market decides who deserves either. They are completely open about what they are. That openness is, somehow, the most unsettling thing about them.</p>
+
+  <p>And then there is <strong>HORUS</strong> — which is not a corpo-state, not a manufacturer in any sense the other four would recognize, and possibly not an organization at all. Their technology appears on the omninet without explanation: mech modifications, weapon systems, things that shouldn't be possible given anything anyone understands about physics. It spreads freely. Nobody knows who builds it. Nobody agrees on what HORUS wants, or whether wanting is even the right framework for whatever HORUS is. What is clear is this: they are hostile to hierarchy, hostile to enclosure, and hostile to the idea that any person or organization should hold permanent control over any technology. The four corpo-states are all, in their different ways, answering the question of who gets to own things. HORUS is the only faction in the galaxy still asking why that's the question.</p>
+
+  <p><strong>You are a lancer.</strong> A mechanized cavalry pilot of particular note, operating somewhere between those two worlds — close enough to the frontier that mechs are necessary, far enough from Cradle that nobody is coming to save you. Mechs are deployed when all other options have failed. When the drop klaxons sound, it is up to you. Whatever your history, you are human: exactly as flawed and capable as that has always meant.</p>
+</div>
+
+<!-- ══════════════════ PART ONE ══════════════════ -->
+<div class="part-div">
+  <div class="part-tag green">Part One</div>
+  <h2 class="part-heading">Who You Are as a Player</h2>
+  <p class="part-sub">Before we talk about your character — who are you at the table? What do you actually come for?</p>
+
+  <div class="instr">
+    <div class="instr-label">Instructions</div>
+    <p>For each question: read every option, then click your top three choices in order — 1st, 2nd, 3rd. Click a ranked option again to release it. There are no wrong answers. Vague ones produce vague games.</p>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-block" data-q="1">
+    <div class="q-num">Question 01 of 25</div>
+    <div class="q-text">What pulled you toward this kind of game in the first place?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I wanted to inhabit someone completely different from me — and see what they'd do.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I wanted a story I couldn't predict, built with people I trust.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I wanted to feel what it's like to make a decision that actually matters.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I wanted to play inside a world with real texture — history, consequence, and weight.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I wanted to make something with other people that none of us could make alone.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I wanted to find out who I'd be when things got hard and the stakes were real.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-block" data-q="2">
+    <div class="q-num">Question 02 of 25</div>
+    <div class="q-text">When a session ends and it was a good one — what actually happened?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">We pulled something off together that required all of us. It was hard and we did it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Something I didn't see coming hit me, and I'm still thinking about it on the drive home.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">My character had a moment — said or did something that felt completely, exactly true.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The world felt inhabited. The NPCs felt like people. I forgot I was sitting at a table.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A relationship between characters shifted. Something changed that can't be undone.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I made a choice I'll be defending or regretting for the next three sessions.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-block" data-q="3">
+    <div class="q-num">Question 03 of 25</div>
+    <div class="q-text">What kind of character do you want to spend a campaign inside?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Someone exceptionally good at something — and quietly aware of what that costs.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Someone carrying a past they haven't fully dealt with, and can't outrun.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Someone who believes in something real and is willing to pay the price for it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Someone who doesn't know what they are yet, and finds out through what they do.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Someone who made the wrong call once and has been living in the aftermath.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Someone others lean on — not because it's easy, but because they show up every time.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-block" data-q="4">
+    <div class="q-num">Question 04 of 25</div>
+    <div class="q-text">What kind of problem do you most want to be handed?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A tactical one — limited resources, a bad position, and the question of how to get through it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A social one — the right words, to the right person, at the right moment. Something real at stake.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A strategic one — a decision whose consequences won't fully surface for several sessions.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">An action one — precision, danger, no margin, everything riding on execution.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">An investigative one — something is hidden, and I want to be the one who finds it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A moral one — two things I care about pulling in opposite directions. No clean answer.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-block" data-q="5">
+    <div class="q-num">Question 05 of 25</div>
+    <div class="q-text">What do you want to be building toward across the whole campaign?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A political outcome — change who holds power, or how decisions get made.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A personal reckoning — something from my character's past that needs to end, one way or another.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A protected future — something I love is under threat, and I want to make it safe.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Something new — I want to build something that didn't exist before and make it last.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The truth — something is being hidden, and I want to expose it regardless of the cost.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A changed person — earn someone's trust, or bring someone over who started on the wrong side.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A confrontation — face the thing that has been threatening what I care about. Directly. Finally.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-block" data-q="6">
+    <div class="q-num">Question 06 of 25</div>
+    <div class="q-text">How do you want the world to treat your character?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Fear — people recalculate when I enter the room. That changes what's possible.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Respect — what I've done earns standing that can't be ignored, even by those who'd prefer to.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Need — I can do something nobody else here can. That's why they called me.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Love — specific people in this world depend on me showing up. That weight is real.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Suspicion — I'm earning trust I haven't been given yet, in a space that has reasons to withhold it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Hope — I represent something to people who have run out of other things to believe in.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-block" data-q="7">
+    <div class="q-num">Question 07 of 25</div>
+    <div class="q-text">What do you want your relationship to the other players to feel like?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A crew — we have a job, we're good at it, and we trust each other inside that.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A found family — we didn't choose each other first, but we'd choose each other now.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A coalition — we want the same thing and we're working together until we get it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A complicated history — there's friction, real feeling, and things left unsaid between us.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A unit under pressure — we may not always like each other, but we don't break.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Something still forming — I want to watch it develop in play rather than decide it now.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-block" data-q="8">
+    <div class="q-num">Question 08 of 25</div>
+    <div class="q-text">When the story ends — or your character's arc does — what do you want to have been true?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">We changed something real in the world. It's different because we were in it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">My character became someone they couldn't have been at the start.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The relationships we built were worth everything the campaign put them through.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">We did the thing everyone said couldn't be done.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I told a story I couldn't have told any other way — with these people, at this table.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I found out something true about myself by playing someone who isn't me.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ PART TWO ══════════════════ -->
+<div class="part-div">
+  <div class="part-tag warm">Part Two</div>
+  <h2 class="part-heading">How You Want to Drive the Story</h2>
+  <p class="part-sub">In a proactive campaign, you set the agenda. The GM builds a world that responds to what you're chasing — not one you're reacting to. These questions tell the GM what to put in your way.</p>
+
+  <!-- Q9 -->
+  <div class="q-block" data-q="9">
+    <div class="q-num">Question 09 of 25</div>
+    <div class="q-text">How do you want the story to move?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Give me a situation and let me decide what matters. I'll tell you where I want to go.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want a clear problem in front of me, but I want real choice in how I solve it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want the world to have its own momentum — and I want to push back against it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want to set a goal at the start of each session and leave having moved toward it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want to be surprised by what I care about — let the story show me what matters.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want the consequences of my choices to be the engine. Point me at something and let it run.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-block" data-q="10">
+    <div class="q-num">Question 10 of 25</div>
+    <div class="q-text">What kind of goal do you want to pursue across the campaign?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Political — change who holds power or how decisions get made in this world.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Personal — resolve something from my character's past that hasn't been settled.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Protective — keep something I love from being lost, taken, or destroyed.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Constructive — build something that didn't exist before and make it last.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Investigative — uncover the truth about something that is being hidden.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Relational — earn someone's trust, change someone's mind, or build something real with another person.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Confrontational — put myself directly in the path of the thing threatening what I care about.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-block" data-q="11">
+    <div class="q-num">Question 11 of 25</div>
+    <div class="q-text">What does failure mean to you?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The goal is gone but a new one opens. I want the story to push me somewhere I didn't expect.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Something in the world gets worse because I wasn't good enough. I want to feel that weight.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A relationship changes — trust lost, allegiance shifted, something between characters that can't be undone.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I have to find another way. The door closed but the goal is still there.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Someone else pays the price for what I failed to do. I want that to mean something.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The failure reframes everything. Something I thought I understood turns out to be wrong.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-block" data-q="12">
+    <div class="q-num">Question 12 of 25</div>
+    <div class="q-text">How do you want to interact with the factions and powers in this world?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A patron — someone who gives me resources and asks for things in return. Power that costs something.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">An ally — someone whose goals genuinely align with mine, at least for now. A real partnership.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A rival — someone who wants what I want but would take it in a way I can't accept.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A villain — a force actively working against what I care about. Something to be stopped.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A convert — someone on the wrong side who I believe can change. The long, expensive project.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A wild card — a faction I cannot fully read, whose agenda I suspect but cannot verify.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-block" data-q="13">
+    <div class="q-num">Question 13 of 25</div>
+    <div class="q-text">What kind of obstacle do you most want between you and what you're after?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">People with their own agendas who get in my way without meaning to.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A system or institution that doesn't care about me — just about its own continuation.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A specific person who wants what I want and will get there first if I let them.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The consequences of something I or someone else did before the campaign started.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A resource I don't have and can't easily get — time, money, information, trust.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A moral cost — the thing I need to do requires becoming something I'm not sure I want to be.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-block" data-q="14">
+    <div class="q-num">Question 14 of 25</div>
+    <div class="q-text">How much do you want your character's personal history to drive the story?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want my backstory to be the engine. The campaign should be about resolving what I carry.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want a few specific threads the GM can pull — people, debts, unfinished things.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want my history to inform who I am, but I want my goals to come from what I find in play.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want to arrive with a blank enough slate that the campaign writes my history for me.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want the other characters' histories to tangle with mine — shared past, complicated present.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">I want my backstory to surface slowly, revealed by what I do rather than what I say.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-block" data-q="15">
+    <div class="q-num">Question 15 of 25</div>
+    <div class="q-text">How do you want the GM to challenge you specifically?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Put the people I love in danger.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Make the thing I'm building feel fragile — show me how easily it could fall apart.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Give the opposition a point of view I can actually understand. Make it hard to hate them.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Force me to choose between two things I care about equally. No way to save both.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Let me get close enough to smell success — then complicate it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Show me the cost of what I want. Not as punishment, but as truth.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q16 -->
+  <div class="q-block" data-q="16">
+    <div class="q-num">Question 16 of 25</div>
+    <div class="q-text">When the campaign ends, what do you want to have been the shape of it?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">We built something together and then fought like hell to keep it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">We chased something across the whole campaign and finally caught it — or didn't.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The world changed because of what we did. Visibly, permanently, undeniably.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The characters changed. What they wanted at the start isn't what they wanted at the end.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">We kept making choices that mattered, and at the end we could trace every consequence back.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">We told a story none of us could have predicted when we sat down at session one.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ PART THREE ══════════════════ -->
+<div class="part-div">
+  <div class="part-tag green">Part Three</div>
+  <h2 class="part-heading">The Lancer Campaign Specifically</h2>
+  <p class="part-sub">The setting, the mechs, the factions, and the fights. What kind of Lancer game do you actually want to play?</p>
+
+  <!-- Q17 -->
+  <div class="q-block" data-q="17">
+    <div class="q-num">Question 17 of 25</div>
+    <div class="q-text">Where do you want the campaign to be set?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A frontier world — remote, under-resourced, largely ungoverned. We are whatever law exists here.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A contested territory — multiple factions want this place, and we are caught between them.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A community worth protecting — a settlement, a station, a people with something at stake.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">An active warzone — we are soldiers inside a conflict larger than any of us.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A core world adjacent — close enough to Union's power to feel it, far enough to resist it.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Deep space — between systems, cut off, operating without a safety net.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q18 -->
+  <div class="q-block" data-q="18">
+    <div class="q-num">Question 18 of 25</div>
+    <div class="q-text">Who do you want to be fighting for?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A community — people we live among, whose survival is directly tied to ours.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A cause — an ideology, a movement, something worth more than any individual contract.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A patron — a powerful figure who provides resources and points us at problems.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Ourselves — a mercenary unit with our own code and our own bottom line.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Union — the hegemony itself, with all the moral weight that carries.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">No one yet — I want the campaign to be about finding something worth fighting for.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q19 -->
+  <div class="q-block" data-q="19">
+    <div class="q-num">Question 19 of 25</div>
+    <div class="q-text">Which manufacturer do you want to define the campaign's identity?</div>
+    <div class="q-note">You'll interact with all of them. This is the one that should feel like yours — aesthetically, ideologically, mechanically.</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">GMS — the commons. Freely licensed, community-repairable, the argument that shared infrastructure works.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">IPS-Northstar — labor and industry. Durable, aggressive, built for people who fight with their hands.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Smith-Shimano Corpro — elegant and agile. Identity as power. Beautiful machines, conditional access.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">HORUS — anarchic and strange. Anti-hierarchical, decentralized, doing things that shouldn't be possible.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Harrison Armory — the strongest weapons in the galaxy, and an ideology to match. Understanding them matters.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q20 -->
+  <div class="q-block" data-q="20">
+    <div class="q-num">Question 20 of 25</div>
+    <div class="q-text">What do you want mech combat to feel like?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A puzzle — positioning, action economy, and the satisfaction of a plan executed under pressure.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A statement — my mech and how I fight it says something about who my pilot is.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A cost — every fight takes something from us. I want to feel the attrition.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A spectacle — big weapons, dramatic moments, the kind of turn that makes the table react.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A last resort — combat is what happens when everything else failed. I want it to feel that way.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">An objective — we're not here to kill everything. We're here to accomplish something specific.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q21 -->
+  <div class="q-block" data-q="21">
+    <div class="q-num">Question 21 of 25</div>
+    <div class="q-text">What do you want narrative play to give you that combat can't?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Relationships — I want to know these NPCs. I want to care what happens to them.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Politics — I want to understand the factions, the agendas, the web of competing interests.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Downtime — I want my pilot to have a life. Projects, connections, things that matter off the drop ship.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Investigation — I want to piece together what's actually happening beneath the mission briefing.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Tension — I want the narrative scenes to feel dangerous in a different way than combat.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Character — I want my pilot to change. I want to watch that happen in conversation, not just battle.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q22 -->
+  <div class="q-block" data-q="22">
+    <div class="q-num">Question 22 of 25</div>
+    <div class="q-text">What do you want the stakes to be?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The survival of a specific community — people we know, whose lives depend on what we do.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The outcome of a larger conflict — we are small pieces in something that will shape the galaxy.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">A personal reckoning — something from my pilot's past that the campaign is moving toward.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">An ideological question — whether a way of living or organizing can actually survive.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">Control of something specific — a territory, a resource, a technology, a piece of information.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">The shape of what comes next — not just winning, but determining what winning builds.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q23 -->
+  <div class="q-block" data-q="23">
+    <div class="q-num">Question 23 of 25</div>
+    <div class="q-text">How do you want the manufacturers and factions to function in the story?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">As employers — they point us at missions, we complete them, the relationship is transactional.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">As ideologies — each faction represents a way of thinking about power and we have to navigate that.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">As threats — one or more factions are actively working against what we care about.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">As complications — factions have goals that intersect with ours in ways that create problems.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">As mirrors — what a faction stands for says something about what we stand for, or don't.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">As potential — some factions could be allies if we play it right. The question is whether to try.</div></div></div>
+    </div>
+  </div>
+
+  <!-- Q24 -->
+  <div class="q-block" data-q="24">
+    <div class="q-num">Question 24 of 25</div>
+    <div class="q-text">What do you want to be true about your pilot by the end of the campaign?</div>
+    <div class="rank-row"><span class="rbadge rb1">1st</span><span class="rbadge rb2">2nd</span><span class="rbadge rb3">3rd</span><span>pick your top three</span></div>
+    <div class="options">
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">My pilot found something worth believing in — and paid enough for it that the belief is real.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">My pilot built a relationship that will outlast the campaign and everything it put it through.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">My pilot changed their mind about something fundamental. The person who started isn't who finished.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">My pilot left something behind — a community, a system, a thing — that works without them.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">My pilot faced the thing they were most afraid of and found out what they were made of.</div></div></div>
+      <div class="option"><div class="rslot"></div><div><div class="opt-main">My pilot made peace with something they carried into the campaign. Or didn't, and we know why.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ Q25 ══════════════════ -->
+<div class="part-div">
+  <div class="part-tag red">Final Question</div>
+  <h2 class="part-heading">Critical Assessment</h2>
+  <p class="part-sub">One last question. Take your time. There is a correct answer.</p>
+
+  <div class="q-block" data-q="25" id="q25block">
+    <div class="q-num">Question 25 of 25</div>
+    <div class="q-text">Who is objectively the best GM at this table?</div>
+    <div class="q-note">Rank your top three. Think carefully.</div>
+
+    <div class="options" id="q25options">
+      <div class="option" data-name="Pete" onclick="jokeClick(this)">
+        <div class="rslot" id="slot-Pete"></div>
+        <div><div class="opt-main">Pete</div><div class="opt-sub">A creative Horace to be reckoned with.</div></div>
+      </div>
+      <div class="option" data-name="Justin" onclick="jokeClick(this)">
+        <div class="rslot" id="slot-Justin"></div>
+        <div><div class="opt-main">Justin</div><div class="opt-sub">Our grimdark Mothership.</div></div>
+      </div>
+      <div class="option" data-name="Jon" onclick="jokeClick(this)">
+        <div class="rslot" id="slot-Jon"></div>
+        <div><div class="opt-main">Jon</div><div class="opt-sub">Peerless Setpiece specialist.</div></div>
+      </div>
+      <div class="option" data-name="Cary" onclick="jokeClick(this)">
+        <div class="rslot" id="slot-Cary"></div>
+        <div><div class="opt-main">Cary</div><div class="opt-sub">Uninitiated and <s>under</s>whelmed.</div></div>
+      </div>
+      <div class="option" data-name="Jeff" onclick="jokeClick(this)">
+        <div class="rslot" id="slot-Jeff"></div>
+        <div><div class="opt-main">Jeff</div><div class="opt-sub">How many guards did you say?</div></div>
+      </div>
+      <div class="option" data-name="Ty" onclick="jokeClick(this)">
+        <div class="rslot" id="slot-Ty"></div>
+        <div><div class="opt-main">Ty</div><div class="opt-sub">The correct choice.</div></div>
+      </div>
+    </div>
+
+    <div class="joke-msg err" id="jokeErr"></div>
+    <div class="joke-msg ok"  id="jokeOk"></div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="results" id="results">
+  <div class="results-title">Survey Complete</div>
+  <p class="results-sub">Review your answers below, then transmit to the GM.</p>
+  <div class="results-grid" id="resultsGrid"></div>
+  <button class="copy-btn" id="copyBtn" onclick="copyResults()">Copy to clipboard</button>
+</div>
+
+<!-- NAME + SUBMIT -->
+<div class="name-block" id="nameBlock" style="display:none;">
+  <div class="name-label">&#9658; Final Step</div>
+  <div class="name-heading">Who are you, pilot?</div>
+  <p class="name-note">Enter your name so the GM knows whose results these are. Then hit transmit.</p>
+  <input class="name-input" type="text" id="playerName" placeholder="Your name..." autocomplete="off">
+  <br>
+  <button class="submit-btn" id="submitBtn" onclick="submitResults()">Transmit to GM</button>
+  <div class="submit-status" id="submitStatus"></div>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+// ── QUESTION DEFINITIONS ──
+const qDefs = {
+  1:  "What pulled you toward this kind of game?",
+  2:  "When a session ends and it was good — what happened?",
+  3:  "What kind of character do you want to spend a campaign inside?",
+  4:  "What kind of problem do you most want?",
+  5:  "What do you want to be building toward?",
+  6:  "How do you want the world to treat your character?",
+  7:  "What do you want your relationship to the other players to feel like?",
+  8:  "When the story ends, what do you want to have been true?",
+  9:  "How do you want the story to move?",
+  10: "What kind of goal do you want to pursue?",
+  11: "What does failure mean to you?",
+  12: "How do you want to interact with factions?",
+  13: "What kind of obstacle do you most want?",
+  14: "How much do you want your history to drive the story?",
+  15: "How do you want the GM to challenge you?",
+  16: "When the campaign ends, what's the shape of it?",
+  17: "Where do you want the campaign set?",
+  18: "Who do you want to be fighting for?",
+  19: "Which manufacturer defines the campaign?",
+  20: "What do you want mech combat to feel like?",
+  21: "What do you want narrative play to give you?",
+  22: "What do you want the stakes to be?",
+  23: "How do you want factions to function?",
+  24: "What do you want to be true about your pilot at the end?",
+  25: "Who is objectively the best GM at this table?",
+};
+
+// state[q] = [opt1el, opt2el, opt3el]
+const state = {};
+for (let q = 1; q <= 24; q++) state[q] = [null,null,null];
+state[25] = 'unanswered';
+
+// ── STANDARD RANKING ──
+document.querySelectorAll('.q-block:not(#q25block) .options').forEach(optGroup => {
+  const q = parseInt(optGroup.closest('.q-block').dataset.q);
+  optGroup.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', () => handlePick(q, opt));
+  });
+});
+
+function handlePick(q, el) {
+  const rank = state[q].indexOf(el);
+  if (rank >= 0) {
+    state[q][rank] = null;
+    const filled = state[q].filter(Boolean);
+    state[q] = [filled[0]||null, filled[1]||null, filled[2]||null];
+  } else {
+    const next = state[q].indexOf(null);
+    if (next === -1) return;
+    state[q][next] = el;
+  }
+  applyRankClasses(q);
+  updateProgress();
+  checkComplete();
+}
+
+function applyRankClasses(q) {
+  const block = document.querySelector(`.q-block[data-q="${q}"]`);
+  if (!block) return;
+  const opts = block.querySelectorAll('.option');
+  const filled = state[q].filter(Boolean).length;
+
+  opts.forEach(opt => {
+    opt.classList.remove('ranked-1','ranked-2','ranked-3','maxed');
+    opt.querySelector('.rslot').textContent = '';
+    const rank = state[q].indexOf(opt);
+    if (rank >= 0) {
+      opt.classList.add(`ranked-${rank+1}`);
+      opt.querySelector('.rslot').textContent = rank + 1;
+    } else if (filled === 3) {
+      opt.classList.add('maxed');
+    }
+  });
+}
+
+// ── Q25 JOKE ──
+const jokeErrors = [
+  "That's not right. Try again.",
+  "Interesting choice. Incorrect, but interesting.",
+  "The survey has detected an error in your judgment.",
+  "This option is no longer available to you.",
+  "Bold. Wrong, but bold.",
+  "The system has logged this answer. The system is disappointed.",
+  "A valiant attempt. Insufficient.",
+];
+let jokeErrCount = 0;
+
+function jokeClick(el) {
+  const name = el.dataset.name;
+  if (name === 'Ty') {
+    document.querySelectorAll('#q25options .option:not([data-name="Ty"])').forEach(o => {
+      if (!o.classList.contains('dead')) {
+        o.classList.add('dead');
+        o.querySelector('.rslot').textContent = '✕';
+      }
+    });
+    el.classList.add('chosen');
+    el.querySelector('.rslot').textContent = '1st';
+    document.getElementById('jokeErr').classList.remove('visible');
+    const ok = document.getElementById('jokeOk');
+    ok.textContent = 'Correct. Your survey has been accepted.';
+    ok.classList.add('visible');
+    state[25] = 'Ty';
+    updateProgress();
+    checkComplete();
+  } else {
+    el.classList.add('dead');
+    el.querySelector('.rslot').textContent = '✕';
+    const err = document.getElementById('jokeErr');
+    err.textContent = jokeErrors[jokeErrCount % jokeErrors.length];
+    err.classList.add('visible');
+    jokeErrCount++;
+  }
+}
+
+// ── PROGRESS ──
+function updateProgress() {
+  let done = 0;
+  for (let q = 1; q <= 24; q++) {
+    if (state[q].filter(Boolean).length === 3) done++;
+  }
+  if (state[25] === 'Ty') done++;
+  const pct = (done / 25) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressDone').textContent = done;
+}
+
+// ── COMPLETE ──
+function checkComplete() {
+  const allDone = Object.keys(qDefs).every(q => {
+    const qi = parseInt(q);
+    if (qi === 25) return state[25] === 'Ty';
+    return state[qi].filter(Boolean).length === 3;
+  });
+  const panel = document.getElementById('results');
+  const nameBlock = document.getElementById('nameBlock');
+  if (allDone) {
+    buildResults();
+    panel.classList.add('visible');
+    nameBlock.style.display = 'block';
+    setTimeout(() => panel.scrollIntoView({behavior:'smooth',block:'start'}), 100);
+  } else {
+    panel.classList.remove('visible');
+    nameBlock.style.display = 'none';
+  }
+}
+
+// ── BUILD RESULTS ──
+const rankLabels = ['1st','2nd','3rd'];
+const rankClasses = ['rr1','rr2','rr3'];
+
+function getOptText(el) {
+  return el?.querySelector('.opt-main')?.textContent?.trim() || '—';
+}
+
+function buildResults() {
+  const grid = document.getElementById('resultsGrid');
+  grid.innerHTML = '';
+
+  const sections = [
+    { label: 'Part One — Who You Are as a Player', qs: [1,2,3,4,5,6,7,8] },
+    { label: 'Part Two — How You Want to Drive the Story', qs: [9,10,11,12,13,14,15,16] },
+    { label: 'Part Three — The Lancer Campaign', qs: [17,18,19,20,21,22,23,24] },
+    { label: 'Final Question', qs: [25] },
+  ];
+
+  sections.forEach(sec => {
+    const secEl = document.createElement('div');
+    secEl.style.cssText = 'margin-bottom:24px;';
+    const secLabel = document.createElement('div');
+    secLabel.style.cssText = 'font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);';
+    secLabel.textContent = sec.label;
+    secEl.appendChild(secLabel);
+
+    sec.qs.forEach(q => {
+      const row = document.createElement('div');
+      row.className = 'result-row';
+      row.style.marginBottom = '18px';
+
+      const qLabel = document.createElement('div');
+      qLabel.className = 'result-q';
+      qLabel.textContent = `Q${q} — ${qDefs[q]}`;
+      row.appendChild(qLabel);
+
+      const answers = document.createElement('div');
+      answers.className = 'result-answers';
+
+      if (q === 25) {
+        const a = document.createElement('div');
+        a.className = 'result-answer';
+        a.innerHTML = `<span class="rrank rr1">1st</span>Ty — The correct choice.`;
+        answers.appendChild(a);
+      } else {
+        state[q].forEach((opt, i) => {
+          const a = document.createElement('div');
+          a.className = 'result-answer';
+          a.innerHTML = `<span class="rrank ${rankClasses[i]}">${rankLabels[i]}</span>${getOptText(opt)}`;
+          answers.appendChild(a);
+        });
+      }
+
+      row.appendChild(answers);
+      secEl.appendChild(row);
+    });
+
+    grid.appendChild(secEl);
+  });
+}
+
+// ── COPY ──
+function copyResults() {
+  const lines = [
+    'LANCER // SESSION ZERO SURVEY',
+    new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),
+    '',
+  ];
+
+  const sections = [
+    { label: 'PART ONE — WHO YOU ARE AS A PLAYER', qs: [1,2,3,4,5,6,7,8] },
+    { label: 'PART TWO — HOW YOU WANT TO DRIVE THE STORY', qs: [9,10,11,12,13,14,15,16] },
+    { label: 'PART THREE — THE LANCER CAMPAIGN', qs: [17,18,19,20,21,22,23,24] },
+    { label: 'FINAL QUESTION', qs: [25] },
+  ];
+
+  sections.forEach(sec => {
+    lines.push(`── ${sec.label} ──`);
+    sec.qs.forEach(q => {
+      lines.push(`\nQ${q}: ${qDefs[q]}`);
+      if (q === 25) {
+        lines.push('  1. Ty — The correct choice.');
+      } else {
+        state[q].forEach((opt,i) => {
+          lines.push(`  ${i+1}. ${getOptText(opt)}`);
+        });
+      }
+    });
+    lines.push('');
+  });
+
+  const name = document.getElementById('playerName')?.value?.trim() || 'Unknown pilot';
+  lines.unshift('Pilot: ' + name, '');
+  const text = lines.join('\n');
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copied';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = 'Copy to clipboard'; btn.classList.remove('done'); }, 2500);
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  });
+}
+
+// ── SUBMIT TO GM ──
+function buildReportText() {
+  const name = document.getElementById('playerName')?.value?.trim() || 'Unknown pilot';
+  const lines = [
+    'LANCER // SESSION ZERO SURVEY',
+    'Pilot: ' + name,
+    new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),
+    '',
+  ];
+  const sections = [
+    { label: 'PART ONE — WHO YOU ARE AS A PLAYER', qs: [1,2,3,4,5,6,7,8] },
+    { label: 'PART TWO — HOW YOU WANT TO DRIVE THE STORY', qs: [9,10,11,12,13,14,15,16] },
+    { label: 'PART THREE — THE LANCER CAMPAIGN', qs: [17,18,19,20,21,22,23,24] },
+    { label: 'FINAL QUESTION', qs: [25] },
+  ];
+  sections.forEach(sec => {
+    lines.push('── ' + sec.label + ' ──');
+    sec.qs.forEach(q => {
+      lines.push('\nQ' + q + ': ' + qDefs[q]);
+      if (q === 25) {
+        lines.push('  1. Ty — The correct choice.');
+      } else {
+        state[q].forEach((opt,i) => {
+          lines.push('  ' + (i+1) + '. ' + getOptText(opt));
+        });
+      }
+    });
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+
+async function submitResults() {
+  const name = document.getElementById('playerName')?.value?.trim();
+  const btn = document.getElementById('submitBtn');
+  const status = document.getElementById('submitStatus');
+
+  if (!name) {
+    status.textContent = 'Enter your name before transmitting.';
+    status.className = 'submit-status visible err';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Transmitting...';
+  status.textContent = '';
+  status.className = 'submit-status';
+
+  const report = buildReportText();
+
+  const payload = {
+    _subject: 'Lancer Session Zero — ' + name,
+    pilot_name: name,
+    survey_results: report,
+  };
+
+  try {
+    const res = await fetch('https://formspree.io/f/xzdkorjk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (res.ok) {
+      btn.textContent = '✓ Transmitted';
+      btn.style.background = 'var(--accent)';
+      btn.style.color = 'var(--bg)';
+      status.textContent = 'Survey received. The GM has your answers. See you at session zero.';
+      status.className = 'submit-status visible ok';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = 'Transmit to GM';
+    status.textContent = 'Transmission failed. Copy your results and send them manually.';
+    status.className = 'submit-status visible err';
+  }
+}
+</script>
+
+</body>
+</html>
